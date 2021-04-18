@@ -1,34 +1,40 @@
 {
-  "schemaVersion": 1,
-  "id": "modid",
-  "version": "${version}",
-
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
-  "authors": [
-    "LudoCrypt"
-  ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-  },
-
-  "license": "LGPLv3",
-  "icon": "assets/modid/icon.png",
-
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "net.ludocrypt.modid.ModId"
-    ]
-  },
-  "mixins": [
-    "modid.mixins.json"
-  ],
-
-  "depends": {
-    "fabricloader": ">=0.7.4",
-    "fabric": "*",
-    "minecraft": "1.16.x"
-  }
+	"schemaVersion": 1,
+	"id": "backrooms",
+	"version": "${version}",
+	"name": "The Backrooms",
+	"description": "The urban legend of The Backrooms, in Minecraft!",
+	"authors": [
+		"LudoCrypt"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/the-backrooms",
+		"sources": "https://github.com/LudoCrypt/The-Backrooms",
+		"issues": "https://github.com/LudoCrypt/The-Backrooms/issues"
+	},
+	"license": "LGPLv3",
+	"icon": "assets/backrooms/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.ludocrypt.backrooms.Backrooms"
+		],
+		"client": [
+			"net.ludocrypt.backrooms.client.BackroomsClient"
+		],
+		"exdimapi": [
+			"net.ludocrypt.backrooms.Backrooms"
+		],
+		"mm:early_risers": [
+			"net.ludocrypt.backrooms.init.BackroomsEarlyRisers"
+		]
+	},
+	"mixins": [
+		"backrooms.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.7.4",
+		"fabric": "*",
+		"minecraft": "1.16.x"
+	}
 }

@@ -1,0 +1,102 @@
+package net.ludocrypt.backrooms.init;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import net.ludocrypt.backrooms.Backrooms;
+import net.ludocrypt.backrooms.block.PlasterwallBlock;
+import net.ludocrypt.backrooms.block.PortalSpawnerBlock;
+import net.ludocrypt.backrooms.block.TileBlock;
+import net.ludocrypt.backrooms.block.entity.PortalSpawnerBlockEntity;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.util.DyeColor;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+
+@SuppressWarnings("all")
+public class BackroomsBlocks {
+
+	private static final Map<Identifier, BlockItem> ITEMS = new LinkedHashMap<>();
+	private static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
+	private static final Map<Identifier, BlockEntityType<?>> BLOCK_ENTITIES = new LinkedHashMap<>();
+
+	public static final Block PORTAL_SPAWNER_BLOCK = add("portal_spawner", new PortalSpawnerBlock(FabricBlockSettings.copyOf(Blocks.END_PORTAL).dropsNothing()), ItemGroup.BUILDING_BLOCKS);
+	public static final BlockEntityType<PortalSpawnerBlockEntity> PORTAL_SPAWNER_BLOCK_ENTITY = add("portal_spawner", PORTAL_SPAWNER_BLOCK, PortalSpawnerBlockEntity::new);
+
+	public static final Block PLASTERWALL = add("plasterwall", new PlasterwallBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(2.0F, 8.0F).breakByTool(FabricToolTags.PICKAXES).requiresTool().materialColor(DyeColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block CORK_TILE = add("cork_tile", new TileBlock(FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).requiresTool().materialColor(DyeColor.WHITE)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block ARROWED_WALLPAPER = add("arrowed_wallpaper", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES).materialColor(DyeColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block LINED_WALLPAPER = add("lined_wallpaper", new Block(FabricBlockSettings.copyOf(ARROWED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block DOTTED_WALLPAPER = add("dotted_wallpaper", new Block(FabricBlockSettings.copyOf(ARROWED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block BLANK_WALLPAPER = add("blank_wallpaper", new Block(FabricBlockSettings.copyOf(ARROWED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block WOOLEN_CARPET = add("woolen_carpet", new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).breakByTool(FabricToolTags.SHEARS).materialColor(DyeColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block MOLDY_WOOLEN_CARPET = add("moldy_woolen_carpet", new Block(FabricBlockSettings.copyOf(WOOLEN_CARPET)), ItemGroup.BUILDING_BLOCKS);
+
+	private static <B extends Block, T extends BlockEntity> BlockEntityType<T> add(String name, B block, Supplier<T> supplier) {
+		Identifier id = Backrooms.id(name);
+		BlockEntityType<T> blockEntity = BlockEntityType.Builder.create(supplier, block).build(null);
+		BLOCK_ENTITIES.put(id, blockEntity);
+		return blockEntity;
+	}
+
+	private static <B extends Block> B add(String name, B block, ItemGroup tab) {
+		return add(name, block, new BlockItem(block, new Item.Settings().group(tab)));
+	}
+
+	private static <B extends Block> B add(String name, B block, BlockItem item) {
+		add(name, block);
+		if (item != null) {
+			item.appendBlocks(Item.BLOCK_ITEMS, item);
+			ITEMS.put(Backrooms.id(name), item);
+		}
+		return block;
+	}
+
+	private static <B extends Block> B add(String name, B block) {
+		BLOCKS.put(Backrooms.id(name), block);
+		return block;
+	}
+
+	public static void init() {
+
+		for (Identifier id : ITEMS.keySet()) {
+			Registry.register(Registry.ITEM, id, ITEMS.get(id));
+		}
+		for (Identifier id : BLOCKS.keySet()) {
+			Registry.register(Registry.BLOCK, id, BLOCKS.get(id));
+		}
+		for (Identifier id : BLOCK_ENTITIES.keySet()) {
+			Registry.register(Registry.BLOCK_ENTITY_TYPE, id, BLOCK_ENTITIES.get(id));
+		}
+
+		registerCompostableBlocks();
+		registerFlammableBlocks();
+		registerFuels();
+	}
+
+	private static void registerCompostableBlocks() {
+
+	}
+
+	private static void registerFlammableBlocks() {
+		FlammableBlockRegistry registry = FlammableBlockRegistry.getDefaultInstance();
+
+	}
+
+	private static void registerFuels() {
+		FuelRegistry registry = FuelRegistry.INSTANCE;
+
+	}
+
+}
