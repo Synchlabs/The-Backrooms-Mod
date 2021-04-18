@@ -1,6 +1,5 @@
 package net.ludocrypt.backrooms.world.feature.level.zero;
 
-import java.util.List;
 import java.util.Random;
 
 import com.mojang.serialization.Codec;
@@ -23,16 +22,17 @@ public class DoorCarverFeature extends Feature<DefaultFeatureConfig> {
 	@Override
 	public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig config) {
 
-		for (Object object : List.of(Direction.values()).stream().filter((dir) -> !dir.equals(Direction.UP) && !dir.equals(Direction.DOWN)).toArray()) {
-			Direction dir = (Direction) object;
-			if (random.nextBoolean() && random.nextBoolean() && random.nextBoolean()) {
-				if (world.getBlockState(pos.offset(dir)).isOf(BackroomsBlocks.PLASTERWALL)) {
-					createWall(world, random, pos, dir);
+		for (Direction dir : Direction.values()) {
+			if (!dir.equals(Direction.UP) && !dir.equals(Direction.DOWN)) {
+				if (random.nextBoolean() && random.nextBoolean() && random.nextBoolean()) {
+					if (!world.isAir(pos.offset(dir))) {
+						createWall(world, random, pos, dir);
+					}
 				}
 			}
 		}
 
-		if (world.getBlockState(pos.north()).isOf(BackroomsBlocks.PLASTERWALL) && world.getBlockState(pos.east()).isOf(BackroomsBlocks.PLASTERWALL) && world.getBlockState(pos.south()).isOf(BackroomsBlocks.PLASTERWALL) && world.getBlockState(pos.west()).isOf(BackroomsBlocks.PLASTERWALL)) {
+		if (!world.isAir(pos.north()) && !world.isAir(pos.east()) && !world.isAir(pos.south()) && !world.isAir(pos.west())) {
 			Direction dir = Direction.random(random);
 			createWall(world, random, pos, dir.equals(Direction.UP) || dir.equals(Direction.DOWN) ? Direction.NORTH : dir);
 		}

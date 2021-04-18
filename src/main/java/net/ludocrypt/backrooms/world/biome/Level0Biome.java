@@ -22,8 +22,8 @@ public class Level0Biome {
 		generationSettings.surfaceBuilder(ConfiguredSurfaceBuilders.NOPE);
 		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_CORK_TILES);
 		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_WOOLEN_CARPET_FLOOR);
+		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_ARROWED_WALLPAPER_FILLER);
 		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_DOOR_CARVER);
-		generationSettings.feature(Feature.TOP_LAYER_MODIFICATION, BackroomsFeatures.LEVEL0_ARROWED_WALLPAPER_FILLER);
 
 		BiomeEffects.Builder biomeEffects = new BiomeEffects.Builder();
 		biomeEffects.skyColor(Color.of(248, 221, 89));
