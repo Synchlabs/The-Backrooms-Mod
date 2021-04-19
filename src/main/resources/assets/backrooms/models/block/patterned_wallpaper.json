@@ -1,6 +1,6 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "backrooms:block/arrowed_wallpaper"
+		"all": "backrooms:block/patterned_wallpaper"
 	}
 }

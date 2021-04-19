@@ -2,6 +2,6 @@
 	"parent": "block/template_single_face",
 	"ambientocclusion": false,
 	"textures": {
-		"texture": "backrooms:block/arrowed_wallpaper"
+		"texture": "backrooms:block/patterned_wallpaper"
 	}
 }
