@@ -28,7 +28,7 @@ public class WallpaperFillerFeature extends Feature<DefaultFeatureConfig> {
 	@Override
 	public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig config) {
 		if (blockstateNoisemap == null) {
-			blockstateNoisemap = MazeChunkGenerator.createNoise(ImmutableList.of(BackroomsBlocks.ARROWED_WALLPAPER.getDefaultState(), BackroomsBlocks.LINED_WALLPAPER.getDefaultState(), BackroomsBlocks.DOTTED_WALLPAPER.getDefaultState(), BackroomsBlocks.BLANK_WALLPAPER.getDefaultState(), BackroomsBlocks.LINED_WALLPAPER.getDefaultState(), BackroomsBlocks.BLANK_WALLPAPER.getDefaultState(), BackroomsBlocks.DOTTED_WALLPAPER.getDefaultState(), BackroomsBlocks.ARROWED_WALLPAPER.getDefaultState(), BackroomsBlocks.PLASTERWALL.getDefaultState()), world.getSeed() ^ -4);
+			blockstateNoisemap = MazeChunkGenerator.createNoise(ImmutableList.of(BackroomsBlocks.PATTERNED_WALLPAPER.getDefaultState(), BackroomsBlocks.STRIPED_WALLPAPER.getDefaultState(), BackroomsBlocks.DOTTED_WALLPAPER.getDefaultState(), BackroomsBlocks.BLANK_WALLPAPER.getDefaultState(), BackroomsBlocks.STRIPED_WALLPAPER.getDefaultState(), BackroomsBlocks.BLANK_WALLPAPER.getDefaultState(), BackroomsBlocks.DOTTED_WALLPAPER.getDefaultState(), BackroomsBlocks.PATTERNED_WALLPAPER.getDefaultState(), BackroomsBlocks.PLASTERWALL.getDefaultState()), world.getSeed() ^ -4);
 		}
 
 		for (int x = 0; x < 16; x++) {

@@ -25,7 +25,7 @@ import net.minecraft.world.gen.chunk.ChunkGeneratorSettings;
 
 public class Level0 extends ExtraDimension {
 
-	public static final Identifier LEVEL_0_ID = Backrooms.id("The_Lobby");
+	public static final Identifier LEVEL_0_ID = Backrooms.id("the_lobby");
 	public static final Map<RegistryKey<Biome>, Biome.MixedNoisePoint> NOISE_POINTS = Maps.newHashMap();
 	public static final NoiseSettings DEFAULT = new NoiseSettings(7, ImmutableList.of(1.0D));
 

@@ -7,7 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.util.StringIdentifiable;
 
 public enum WallpaperType implements StringIdentifiable {
-	EMPTY("empty", () -> BackroomsBlocks.PLASTERWALL), ARROWED("arrowed", () -> BackroomsBlocks.ARROWED_WALLPAPER), LINED("lined", () -> BackroomsBlocks.LINED_WALLPAPER), DOTTED("dotted", () -> BackroomsBlocks.DOTTED_WALLPAPER), BLANK("blank", () -> BackroomsBlocks.BLANK_WALLPAPER);
+	EMPTY("empty", () -> BackroomsBlocks.PLASTERWALL), ARROWED("arrowed", () -> BackroomsBlocks.PATTERNED_WALLPAPER), LINED("lined", () -> BackroomsBlocks.STRIPED_WALLPAPER), DOTTED("dotted", () -> BackroomsBlocks.DOTTED_WALLPAPER), BLANK("blank", () -> BackroomsBlocks.BLANK_WALLPAPER);
 
 	public final String name;
 	public final Supplier<Block> block;

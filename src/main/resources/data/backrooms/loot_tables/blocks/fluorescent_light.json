@@ -34,23 +34,43 @@
                   "children": [
                     {
                       "type": "minecraft:item",
-                      "name": "minecraft:glowstone",
+                      "name": "minecraft:glowstone_dust",
                       "conditions": [
                         {
                           "condition": "minecraft:random_chance",
                           "chance": 0.5
                         }
-                      ]
+                      ],
+                      "functions": [
+            	{
+            		"function": "minecraft:apply_bonus",
+  					"enchantment": "minecraft:fortune",
+ 					 "formula": "minecraft:ore_drops"
+            	}
+        	]
                     },
                     {
                       "type": "minecraft:item",
-                      "name": "minecraft:redstone"
-                    },
+                      "name": "minecraft:redstone",
+                      "conditions": [
+                        {
+                          "condition": "minecraft:random_chance",
+                          "chance": 0.5
+                        }
+                      ],
+                      "functions": [
+            	{
+            		"function": "minecraft:apply_bonus",
+  					"enchantment": "minecraft:fortune",
+ 					 "formula": "minecraft:ore_drops"
+            	}
+        	]
+                    }
                   ],
                   "conditions": [
                     {
                       "condition": "minecraft:random_chance",
-                      "chance": 0.1
+                      "chance": 0.2
                     }
                   ]
                 },

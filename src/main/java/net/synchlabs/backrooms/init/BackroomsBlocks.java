@@ -38,12 +38,19 @@ public class BackroomsBlocks {
 	public static final Block PLASTERWALL = add("plasterwall", new PlasterwallBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(2.0F, 8.0F).breakByTool(FabricToolTags.PICKAXES).requiresTool().materialColor(DyeColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block CORK_TILE = add("cork_tile", new TileBlock(FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.SWORDS).requiresTool().materialColor(DyeColor.WHITE)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FLUORESCENT_LIGHT = add("fluorescent_light", new FluorescentLightBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).ticksRandomly().breakByTool(FabricToolTags.PICKAXES).requiresTool().materialColor(DyeColor.WHITE)), ItemGroup.BUILDING_BLOCKS);
-	public static final Block ARROWED_WALLPAPER = add("patterned_wallpaper", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES).materialColor(DyeColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-	public static final Block LINED_WALLPAPER = add("striped_wallpaper", new Block(FabricBlockSettings.copyOf(ARROWED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
-	public static final Block DOTTED_WALLPAPER = add("dotted_wallpaper", new Block(FabricBlockSettings.copyOf(ARROWED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
-	public static final Block BLANK_WALLPAPER = add("blank_wallpaper", new Block(FabricBlockSettings.copyOf(ARROWED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block PATTERNED_WALLPAPER = add("patterned_wallpaper", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES).materialColor(DyeColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block STRIPED_WALLPAPER = add("striped_wallpaper", new Block(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block DOTTED_WALLPAPER = add("dotted_wallpaper", new Block(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block BLANK_WALLPAPER = add("blank_wallpaper", new Block(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block WOOLEN_CARPET = add("moist_carpet", new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).breakByTool(FabricToolTags.SHEARS).materialColor(DyeColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block MOLDY_WOOLEN_CARPET = add("moldy_carpet", new Block(FabricBlockSettings.copyOf(WOOLEN_CARPET)), ItemGroup.BUILDING_BLOCKS);
+
+
+	public static final Block RED_PATTERNED_WALLPAPER = add("red_patterned_wallpaper", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES).materialColor(DyeColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block RED_STRIPED_WALLPAPER = add("red_striped_wallpaper", new Block(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block RED_DOTTED_WALLPAPER = add("red_dotted_wallpaper", new Block(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block RED_BLANK_WALLPAPER = add("red_blank_wallpaper", new Block(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
+
 
 	private static <B extends Block, T extends BlockEntity> BlockEntityType<T> add(String name, B block, Supplier<T> supplier) {
 		Identifier id = Backrooms.id(name);
