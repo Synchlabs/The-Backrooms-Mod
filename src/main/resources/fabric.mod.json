@@ -23,7 +23,7 @@
 			"net.synchlabs.backrooms.client.BackroomsClient"
 		],
 		"exdimapi": [
-			"net.ludocrypt.backrooms.Backrooms"
+			"net.synchlabs.backrooms.Backrooms"
 		],
 		"mm:early_risers": [
 			"net.synchlabs.backrooms.init.BackroomsEarlyRisers"
