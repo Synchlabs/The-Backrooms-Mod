@@ -6,7 +6,7 @@
           "entries": [
             {
               "type": "minecraft:item",
-              "name": "backrooms:woolen_carpet"
+              "name": "backrooms:moist_carpet"
             }
           ],
           "conditions": [

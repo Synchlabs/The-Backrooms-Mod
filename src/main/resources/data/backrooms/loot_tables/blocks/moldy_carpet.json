@@ -9,7 +9,7 @@
               "children": [
                 {
               "type": "minecraft:item",
-              "name": "backrooms:moldy_woolen_carpet",
+              "name": "backrooms:moldy_carpet",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -22,7 +22,7 @@
 
             {
               "type": "minecraft:item",
-              "name": "backrooms:woolen_carpet"
+              "name": "backrooms:moist_carpet"
             }
               ]
             }

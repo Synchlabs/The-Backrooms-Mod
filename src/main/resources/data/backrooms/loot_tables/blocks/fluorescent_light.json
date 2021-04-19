@@ -34,10 +34,6 @@
                   "children": [
                     {
                       "type": "minecraft:item",
-                      "name": "minecraft:redstone"
-                    },
-                    {
-                      "type": "minecraft:item",
                       "name": "minecraft:glowstone",
                       "conditions": [
                         {
@@ -45,7 +41,11 @@
                           "chance": 0.5
                         }
                       ]
-                    }
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "name": "minecraft:redstone"
+                    },
                   ],
                   "conditions": [
                     {
