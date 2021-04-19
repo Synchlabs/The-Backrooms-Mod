@@ -4,12 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.ludocrypt.backrooms.Backrooms;
-import net.ludocrypt.backrooms.util.WallpaperType;
 import net.ludocrypt.backrooms.world.feature.ForeachExtraPosDecorator;
 import net.ludocrypt.backrooms.world.feature.ForeachPosDecorator;
 import net.ludocrypt.backrooms.world.feature.level.zero.DoorCarverFeature;
 import net.ludocrypt.backrooms.world.feature.level.zero.TileFeature;
-import net.ludocrypt.backrooms.world.feature.level.zero.WallpaperConfig;
 import net.ludocrypt.backrooms.world.feature.level.zero.WallpaperFillerFeature;
 import net.ludocrypt.backrooms.world.feature.level.zero.WoolenCarpetFeature;
 import net.minecraft.util.Identifier;
@@ -40,14 +38,11 @@ public class BackroomsFeatures {
 	public static final Feature<DefaultFeatureConfig> WOOLEN_CARPET_FLOOR_FEATURE = add("woolen_carpet_floor_feature", new WoolenCarpetFeature(DefaultFeatureConfig.CODEC));
 	public static final ConfiguredFeature<?, ?> LEVEL0_WOOLEN_CARPET_FLOOR = add("woolen_carpet_floor", WOOLEN_CARPET_FLOOR_FEATURE.configure(DefaultFeatureConfig.INSTANCE).decorate(FOREACH_POS.configure(new ChanceDecoratorConfig(99))));
 
-	public static final Feature<DefaultFeatureConfig> DOOR_CARVER_FEATURE = add("carver_feature", new DoorCarverFeature(DefaultFeatureConfig.CODEC));
+	public static final Feature<DefaultFeatureConfig> DOOR_CARVER_FEATURE = add("door_carver_feature", new DoorCarverFeature(DefaultFeatureConfig.CODEC));
 	public static final ConfiguredFeature<?, ?> LEVEL0_DOOR_CARVER = add("door_carver", DOOR_CARVER_FEATURE.configure(DefaultFeatureConfig.INSTANCE).decorate(FOREACH_EXTRA_POS.configure(new ChanceDecoratorConfig(100))));
 
-	public static final Feature<WallpaperConfig> WALLPAPER_FILLER_FEATURE = add("door_carver_feature", new WallpaperFillerFeature(WallpaperConfig.CODEC));
-	public static final ConfiguredFeature<?, ?> LEVEL0_ARROWED_WALLPAPER_FILLER = add("arrowed_wallpaper_filler", WALLPAPER_FILLER_FEATURE.configure(new WallpaperConfig(WallpaperType.ARROWED)).decorate(FOREACH_EXTRA_POS.configure(new ChanceDecoratorConfig(100))));
-	public static final ConfiguredFeature<?, ?> LEVEL0_LINED_WALLPAPER_FILLER = add("lined_wallpaper_filler", WALLPAPER_FILLER_FEATURE.configure(new WallpaperConfig(WallpaperType.LINED)).decorate(FOREACH_EXTRA_POS.configure(new ChanceDecoratorConfig(100))));
-	public static final ConfiguredFeature<?, ?> LEVEL0_DOTTED_WALLPAPER_FILLER = add("dotted_wallpaper_filler", WALLPAPER_FILLER_FEATURE.configure(new WallpaperConfig(WallpaperType.DOTTED)).decorate(FOREACH_EXTRA_POS.configure(new ChanceDecoratorConfig(100))));
-	public static final ConfiguredFeature<?, ?> LEVEL0_BLANK_WALLPAPER_FILLER = add("blank_wallpaper_filler", WALLPAPER_FILLER_FEATURE.configure(new WallpaperConfig(WallpaperType.BLANK)).decorate(FOREACH_EXTRA_POS.configure(new ChanceDecoratorConfig(100))));
+	public static final Feature<DefaultFeatureConfig> WALLPAPER_FILLER_FEATURE = add("wallpaper_filler_feature", new WallpaperFillerFeature(DefaultFeatureConfig.CODEC));
+	public static final ConfiguredFeature<?, ?> LEVEL0_WALLPAPER_FILLER = add("wallpaper_filler", WALLPAPER_FILLER_FEATURE.configure(DefaultFeatureConfig.INSTANCE).decorate(FOREACH_EXTRA_POS.configure(new ChanceDecoratorConfig(100))));
 
 	private static <FC extends FeatureConfig, F extends Feature<FC>> ConfiguredFeature<FC, F> add(String name, ConfiguredFeature<FC, F> cf) {
 		CONFIGURED_FEATURES.put(Backrooms.id(name), cf);
