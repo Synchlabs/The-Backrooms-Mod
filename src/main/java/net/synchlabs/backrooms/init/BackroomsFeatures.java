@@ -6,10 +6,7 @@ import java.util.Map;
 import net.synchlabs.backrooms.Backrooms;
 import net.synchlabs.backrooms.world.feature.ForeachExtraPosDecorator;
 import net.synchlabs.backrooms.world.feature.ForeachPosDecorator;
-import net.synchlabs.backrooms.world.feature.level.zero.DoorCarverFeature;
-import net.synchlabs.backrooms.world.feature.level.zero.TileFeature;
-import net.synchlabs.backrooms.world.feature.level.zero.WallpaperFillerFeature;
-import net.synchlabs.backrooms.world.feature.level.zero.WoolenCarpetFeature;
+import net.synchlabs.backrooms.world.feature.level.zero.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -43,6 +40,10 @@ public class BackroomsFeatures {
 
 	public static final Feature<DefaultFeatureConfig> WALLPAPER_FILLER_FEATURE = add("wallpaper_filler_feature", new WallpaperFillerFeature(DefaultFeatureConfig.CODEC));
 	public static final ConfiguredFeature<?, ?> LEVEL0_WALLPAPER_FILLER = add("wallpaper_filler", WALLPAPER_FILLER_FEATURE.configure(DefaultFeatureConfig.INSTANCE).decorate(FOREACH_EXTRA_POS.configure(new ChanceDecoratorConfig(100))));
+
+	public static final Feature<DefaultFeatureConfig> RED_WALLPAPER_FILLER_FEATURE = add("red_wallpaper_filler_feature", new RedWallpaperFillerFeature(DefaultFeatureConfig.CODEC));
+	public static final ConfiguredFeature<?, ?> LEVEL0_RED_WALLPAPER_FILLER = add("red_wallpaper_filler", RED_WALLPAPER_FILLER_FEATURE.configure(DefaultFeatureConfig.INSTANCE).decorate(FOREACH_EXTRA_POS.configure(new ChanceDecoratorConfig(100))));
+
 
 	private static <FC extends FeatureConfig, F extends Feature<FC>> ConfiguredFeature<FC, F> add(String name, ConfiguredFeature<FC, F> cf) {
 		CONFIGURED_FEATURES.put(Backrooms.id(name), cf);
