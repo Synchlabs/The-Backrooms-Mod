@@ -30,7 +30,7 @@ public class Level0 extends ExtraDimension {
 	public static final NoiseSettings DEFAULT = new NoiseSettings(7, ImmutableList.of(1.0D));
 
 	public Level0() {
-		super(LEVEL_0_ID, DimensionTypeAccessor.createDimensionType(OptionalLong.empty(), true, false, false, false, 1, false, false, false, false, false, 256, VoronoiBiomeAccessType.INSTANCE, BlockTags.INFINIBURN_OVERWORLD.getId(), LEVEL_0_ID, 1.0F), new Level0Sky(), (dim, client, ci) -> {
+		super(LEVEL_0_ID, DimensionTypeAccessor.createDimensionType(OptionalLong.of(1200), true, false, false, false, 1, false, false, false, false, false, 256, VoronoiBiomeAccessType.INSTANCE, BlockTags.INFINIBURN_OVERWORLD.getId(), LEVEL_0_ID, 0.3F), new Level0Sky(), (dim, client, ci) -> {
 		}, DEFAULT, DEFAULT, DEFAULT, DEFAULT, null, NOISE_POINTS);
 	}
 
@@ -52,12 +52,17 @@ public class Level0 extends ExtraDimension {
 
 		@Override
 		public Vec3d adjustFogColor(Vec3d color, float sunHeight) {
-			return null;
+			return color;
 		}
 
 		@Override
 		public boolean useThickFog(int camX, int camY) {
 			return true;
+		}
+
+		@Override
+		public float[] getFogColorOverride(float skyAngle, float tickDelta) {
+			return null;
 		}
 
 	}

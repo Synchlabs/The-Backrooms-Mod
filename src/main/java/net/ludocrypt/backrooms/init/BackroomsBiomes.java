@@ -22,7 +22,7 @@ public class BackroomsBiomes {
 		for (Identifier id : BIOMES.keySet()) {
 			Registry.register(BuiltinRegistries.BIOME, id, BIOMES.get(id));
 		}
-		Level0.NOISE_POINTS.put(LEVEL0, new Biome.MixedNoisePoint(0, 0, 0, 0, 0));
+		Level0.NOISE_POINTS.put(LEVEL0, new Biome.MixedNoisePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.0F));
 	}
 
 	private static RegistryKey<Biome> add(String s, Biome b) {

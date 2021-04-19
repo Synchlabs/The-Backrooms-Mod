@@ -4,7 +4,6 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
-import net.ludocrypt.backrooms.init.BackroomsBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -45,9 +44,6 @@ public class DoorCarverFeature extends Feature<DefaultFeatureConfig> {
 		BlockPos.iterate(pos.offset(dir, addedOffset), pos.offset(dir, addedOffset + 1).add(0, 3, 0)).forEach((blockPos) -> {
 			world.setBlockState(blockPos, Blocks.AIR.getDefaultState(), 3);
 		});
-		if (random.nextBoolean() && random.nextBoolean() && random.nextBoolean() && random.nextBoolean() && random.nextBoolean() && random.nextBoolean()) {
-			world.setBlockState(pos.offset(dir, addedOffset), BackroomsBlocks.PORTAL_SPAWNER_BLOCK.getDefaultState(), 3);
-		}
 	}
 
 }

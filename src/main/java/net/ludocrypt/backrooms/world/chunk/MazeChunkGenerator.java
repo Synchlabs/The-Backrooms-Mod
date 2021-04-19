@@ -86,10 +86,10 @@ public class MazeChunkGenerator extends ChunkGenerator {
 		this.seaLevel = seaLevel;
 		this.biomeSource = biomeSource;
 		this.seed = seed;
-		this.noisemapOne = createNoise(northNoisemap, seed);
-		this.noisemapTwo = createNoise(eastNoisemap, seed);
-		this.noisemapThree = createNoise(southNoisemap, seed);
-		this.noisemapFour = createNoise(westNoisemap, seed);
+		this.noisemapOne = createNoise(northNoisemap, seed ^ 3);
+		this.noisemapTwo = createNoise(eastNoisemap, seed ^ 4);
+		this.noisemapThree = createNoise(southNoisemap, seed ^ 5);
+		this.noisemapFour = createNoise(westNoisemap, seed ^ 6);
 	}
 
 	@Override
