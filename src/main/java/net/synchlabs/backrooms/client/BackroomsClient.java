@@ -10,7 +10,7 @@ public class BackroomsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 
-		BlockRenderLayerMap.INSTANCE.putBlock(BackroomsBlocks.OFFICE_DOOR, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(BackroomsBlocks.OFFICE_DOOR, RenderLayer.getTranslucent());
 	}
 
 }
