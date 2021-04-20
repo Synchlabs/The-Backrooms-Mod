@@ -6,7 +6,7 @@
           "entries": [
             {
               "type": "minecraft:item",
-              "name": "backrooms:redrooms_carpet"
+              "name": "backrooms:bloody_carpet"
             }
           ],
           "conditions": [
