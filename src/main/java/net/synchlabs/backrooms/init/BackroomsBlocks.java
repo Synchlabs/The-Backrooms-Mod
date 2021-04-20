@@ -8,11 +8,9 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import net.minecraft.block.DoorBlock;
 import net.synchlabs.backrooms.Backrooms;
-import net.synchlabs.backrooms.block.FluorescentLightBlock;
-import net.synchlabs.backrooms.block.PlasterwallBlock;
-import net.synchlabs.backrooms.block.PortalSpawnerBlock;
-import net.synchlabs.backrooms.block.TileBlock;
+import net.synchlabs.backrooms.block.*;
 import net.synchlabs.backrooms.block.entity.PortalSpawnerBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -51,6 +49,7 @@ public class BackroomsBlocks {
 	public static final Block RED_DOTTED_WALLPAPER = add("red_dotted_wallpaper", new Block(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block RED_BLANK_WALLPAPER = add("red_blank_wallpaper", new Block(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
 
+	public static final Block OFFICE_DOOR = add("office_door", new BackroomsDoorBlock(FabricBlockSettings.copyOf(PATTERNED_WALLPAPER)), ItemGroup.BUILDING_BLOCKS);
 
 	private static <B extends Block, T extends BlockEntity> BlockEntityType<T> add(String name, B block, Supplier<T> supplier) {
 		Identifier id = Backrooms.id(name);

@@ -24,12 +24,13 @@ public class BackroomsBiomes {
 		for (Identifier id : BIOMES.keySet()) {
 			Registry.register(BuiltinRegistries.BIOME, id, BIOMES.get(id));
 		}
-		Level0.NOISE_POINTS.put(LEVEL0, new Biome.MixedNoisePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.0F));
-		Level0.NOISE_POINTS.put(REDROOMS_LEVEL0, new Biome.MixedNoisePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.0F));
+		Level0.NOISE_POINTS.put(LEVEL0, new Biome.MixedNoisePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.5F));
+		//Level0.NOISE_POINTS.put(REDROOMS_LEVEL0, new Biome.MixedNoisePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.3F));
 	}
 
 	private static RegistryKey<Biome> add(String s, Biome b) {
 		Identifier id = Backrooms.id(s);
+		System.out.println("registering biome with id "+id);
 		BIOMES.put(id, b);
 		return RegistryKey.of(Registry.BIOME_KEY, id);
 	}
