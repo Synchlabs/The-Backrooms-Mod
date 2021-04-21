@@ -13,10 +13,15 @@ public class BackroomsLoomPatterns {
 
 	private static final Map<Identifier, LoomPattern> LOOM_PATTERNS = new LinkedHashMap<>();
 
-	public static final LoomPattern ARROWED = add("arrowed", new LoomPattern(false));
-	public static final LoomPattern LINED = add("lined", new LoomPattern(false));
+	public static final LoomPattern PATTERNED = add("patterned", new LoomPattern(false));
+	public static final LoomPattern STRIPED = add("striped", new LoomPattern(false));
 	public static final LoomPattern DOTTED = add("dotted", new LoomPattern(false));
 	public static final LoomPattern BLANK = add("blank", new LoomPattern(false));
+
+	public static final LoomPattern RED_PATTERNED = add("red_patterned", new LoomPattern(false));
+	public static final LoomPattern RED_STRIPED = add("red_striped", new LoomPattern(false));
+	public static final LoomPattern RED_DOTTED = add("red_dotted", new LoomPattern(false));
+	public static final LoomPattern RED_BLANK = add("red_blank", new LoomPattern(false));
 
 	public static void init() {
 		for (Identifier id : LOOM_PATTERNS.keySet()) {
