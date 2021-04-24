@@ -1,7 +1,7 @@
 {
 	"required": true,
 	"minVersion": "0.8",
-	"package": "net.ludocrypt.backrooms.mixin",
+	"package": "net.synchlabs.backrooms.mixin",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
 	],

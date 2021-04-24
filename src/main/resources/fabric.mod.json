@@ -5,7 +5,7 @@
 	"name": "The Backrooms",
 	"description": "The urban legend of The Backrooms, in Minecraft!",
 	"authors": [
-		"LudoCrypt"
+		"Synchlabs"
 	],
 	"contact": {
 		"homepage": "https://www.curseforge.com/minecraft/mc-mods/the-backrooms",
@@ -17,16 +17,16 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.ludocrypt.backrooms.Backrooms"
+			"net.synchlabs.backrooms.Backrooms"
 		],
 		"client": [
-			"net.ludocrypt.backrooms.client.BackroomsClient"
+			"net.synchlabs.backrooms.client.BackroomsClient"
 		],
 		"exdimapi": [
-			"net.ludocrypt.backrooms.Backrooms"
+			"net.synchlabs.backrooms.Backrooms"
 		],
 		"mm:early_risers": [
-			"net.ludocrypt.backrooms.init.BackroomsEarlyRisers"
+			"net.synchlabs.backrooms.init.BackroomsEarlyRisers"
 		]
 	},
 	"mixins": [
