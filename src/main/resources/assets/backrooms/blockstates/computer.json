@@ -1,7 +1,10 @@
 {
 	"variants": {
-		"": {
-			"model": "backrooms:block/computer"
+		"on=false": {
+			"model": "backrooms:block/computer_off"
+		},
+		"on=true": {
+			"model": "backrooms:block/computer_on"
 		}
 	}
 }
