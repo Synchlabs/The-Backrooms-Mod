@@ -24,12 +24,12 @@ public class ComputerBlockEntity extends BlockEntity implements Tickable {
         BlockState state = world.getBlockState(pos);
         if(world.isReceivingRedstonePower(pos)) {
             System.out.println("ON");
-            world.setBlockState(pos, state.with(ComputerBlock.ON, true));
+            world.setBlockState(pos, state.with(ComputerBlock.LIT, true));
         }
         else
         {
             System.out.println("OFF");
-            world.setBlockState(pos, state.with(ComputerBlock.ON, false));
+            world.setBlockState(pos, state.with(ComputerBlock.LIT, false));
         }
     }
 

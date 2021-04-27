@@ -16,16 +16,16 @@ import net.synchlabs.backrooms.block.entity.ComputerBlockEntity;
 
 public class ComputerBlock extends HorizontalFacingBlock implements BlockEntityProvider {
 
-    public static final BooleanProperty ON = BooleanProperty.of("on");
+    public static final BooleanProperty LIT = Properties.LIT;
 
     public ComputerBlock(FabricBlockSettings fabricBlockSettings) {
         super(fabricBlockSettings);
-        setDefaultState(this.stateManager.getDefaultState().with(ON, false).with(Properties.HORIZONTAL_FACING, Direction.NORTH));
+        setDefaultState(this.stateManager.getDefaultState().with(LIT, false).with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-        stateManager.add(ON);
+        stateManager.add(LIT);
         stateManager.add(Properties.HORIZONTAL_FACING);
     }
 
