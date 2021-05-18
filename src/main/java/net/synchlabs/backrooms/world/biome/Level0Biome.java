@@ -21,6 +21,7 @@ public class Level0Biome {
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
 		generationSettings.surfaceBuilder(ConfiguredSurfaceBuilders.NOPE);
 		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_CORK_TILES);
+		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_FLUORESCENT_LIGHTS);
 		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_WOOLEN_CARPET_FLOOR);
 		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_WALLPAPER_FILLER);
 		generationSettings.feature(Feature.RAW_GENERATION, BackroomsFeatures.LEVEL0_DOOR_CARVER);

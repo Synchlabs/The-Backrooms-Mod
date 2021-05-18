@@ -32,6 +32,9 @@ public class BackroomsFeatures {
 	public static final Feature<DefaultFeatureConfig> CORK_TILE_FEATURE = add("cork_tile_feature", new TileFeature(DefaultFeatureConfig.CODEC));
 	public static final ConfiguredFeature<?, ?> LEVEL0_CORK_TILES = add("level0_cork_tiles", CORK_TILE_FEATURE.configure(DefaultFeatureConfig.INSTANCE).decorate(FOREACH_POS.configure(new ChanceDecoratorConfig(104))));
 
+	public static final Feature<DefaultFeatureConfig> FLUORESCENT_LIGHT_FEATURE = add("fluorescent_light_feature", new FluorescentLightFeature(DefaultFeatureConfig.CODEC));
+	public static final ConfiguredFeature<?, ?> LEVEL0_FLUORESCENT_LIGHTS = add("level0_fluorescent_lights", FLUORESCENT_LIGHT_FEATURE.configure(DefaultFeatureConfig.INSTANCE).decorate(FOREACH_POS.configure(new ChanceDecoratorConfig(104))));
+
 	public static final Feature<DefaultFeatureConfig> WOOLEN_CARPET_FLOOR_FEATURE = add("woolen_carpet_floor_feature", new WoolenCarpetFeature(DefaultFeatureConfig.CODEC));
 	public static final ConfiguredFeature<?, ?> LEVEL0_WOOLEN_CARPET_FLOOR = add("woolen_carpet_floor", WOOLEN_CARPET_FLOOR_FEATURE.configure(DefaultFeatureConfig.INSTANCE).decorate(FOREACH_POS.configure(new ChanceDecoratorConfig(99))));
 
