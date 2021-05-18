@@ -9,8 +9,8 @@
 	],
 	"contact": {
 		"homepage": "https://www.curseforge.com/minecraft/mc-mods/the-backrooms",
-		"sources": "https://github.com/LudoCrypt/The-Backrooms",
-		"issues": "https://github.com/LudoCrypt/The-Backrooms/issues"
+		"sources": "https://github.com/Synchlabs/The-Backrooms",
+		"issues": "https://github.com/Synchlabs/The-Backrooms/issues"
 	},
 	"license": "LGPLv3",
 	"icon": "assets/backrooms/icon.png",
@@ -24,6 +24,9 @@
 		],
 		"exdimapi": [
 			"net.synchlabs.backrooms.Backrooms"
+		],
+		"exskyapi": [
+			"net.synchlabs.backrooms.client.BackroomsClient"
 		],
 		"mm:early_risers": [
 			"net.synchlabs.backrooms.init.BackroomsEarlyRisers"
