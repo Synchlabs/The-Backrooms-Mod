@@ -7,16 +7,13 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 
 import net.synchlabs.backrooms.Backrooms;
-import net.synchlabs.backrooms.client.BackroomsClient;
 import net.synchlabs.backrooms.init.BackroomsBlocks;
 import net.synchlabs.backrooms.world.chunk.MazeChunkGenerator;
 import net.ludocrypt.exdimapi.api.ExtraDimension;
 import net.ludocrypt.exdimapi.mixin.DimensionTypeAccessor;
 import net.ludocrypt.exdimapi.util.NoiseSettings;
-import net.minecraft.client.render.SkyProperties;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
