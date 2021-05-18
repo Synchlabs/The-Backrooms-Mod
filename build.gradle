@@ -35,7 +35,6 @@ dependencies {
 	
 	includeMod "com.terraformersmc:vistas:${project.vistas_version}"
 	includeMod "com.github.LudoCrypt:Extra-Dim-Api:${project.exdimapi_version}"
-	includeMod "com.github.PepperCode1:ConnectedTexturesMod-Fabric:${project.ctm_version}"
 	includeMod "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
 	includeMod "io.github.fablabsmc:bannerpp:${project.bannerpp_version}"
 	
