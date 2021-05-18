@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 
 import net.synchlabs.backrooms.Backrooms;
+import net.synchlabs.backrooms.client.BackroomsClient;
 import net.synchlabs.backrooms.init.BackroomsBlocks;
 import net.synchlabs.backrooms.world.chunk.MazeChunkGenerator;
 import net.ludocrypt.exdimapi.api.ExtraDimension;
@@ -23,14 +24,14 @@ import net.minecraft.world.biome.source.VoronoiBiomeAccessType;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorSettings;
 
-public class Level0 extends ExtraDimension {
+public class Level0 extends ExtraDimension{
 
 	public static final Identifier LEVEL_0_ID = Backrooms.id("the_lobby");
 	public static final Map<RegistryKey<Biome>, Biome.MixedNoisePoint> NOISE_POINTS = Maps.newHashMap();
 	public static final NoiseSettings DEFAULT = new NoiseSettings(7, ImmutableList.of(1.0D));
 
 	public Level0() {
-		super(LEVEL_0_ID, DimensionTypeAccessor.createDimensionType(OptionalLong.of(1200), true, false, false, false, 1, false, false, false, false, false, 256, VoronoiBiomeAccessType.INSTANCE, BlockTags.INFINIBURN_OVERWORLD.getId(), LEVEL_0_ID, 0.1F), new Level0Sky(), (dim, client, ci) -> {
+		super(LEVEL_0_ID, DimensionTypeAccessor.createDimensionType(OptionalLong.of(1200), true, false, false, false, 1, false, false, false, false, false, 256, VoronoiBiomeAccessType.INSTANCE, BlockTags.INFINIBURN_OVERWORLD.getId(), LEVEL_0_ID, 0.1F), new Identifier(), (dim, client, ci) -> {
 		}, DEFAULT, DEFAULT, DEFAULT, DEFAULT, null, NOISE_POINTS);
 	}
 

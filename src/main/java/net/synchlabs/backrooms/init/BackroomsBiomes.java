@@ -25,7 +25,7 @@ public class BackroomsBiomes {
 			Registry.register(BuiltinRegistries.BIOME, id, BIOMES.get(id));
 		}
 		Level0.NOISE_POINTS.put(LEVEL0, new Biome.MixedNoisePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.5F));
-		//Level0.NOISE_POINTS.put(REDROOMS_LEVEL0, new Biome.MixedNoisePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.3F));
+		Level0.NOISE_POINTS.put(REDROOMS_LEVEL0, new Biome.MixedNoisePoint(0.0F, 0.4F, 0.0F, 0.1F, 0.1F));
 	}
 
 	private static RegistryKey<Biome> add(String s, Biome b) {
