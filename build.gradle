@@ -12,18 +12,18 @@ group = project.maven_group
 
 repositories {
 	maven {
+        name = 'TerraformersMC'
+        url = 'https://maven.terraformersmc.com/'
+        }
+        maven {
 		url 'https://jitpack.io'
 	}
-	maven {
+        maven {
 		url "https://maven.shedaniel.me/"
 	}
 	maven {
 		url 'https://server.bbkr.space/artifactory/libs-release/'
 	}
-	maven {
-        name = 'TerraformersMC'
-        url = 'https://maven.terraformersmc.com/'
-    }
 }
 
 dependencies {
@@ -32,19 +32,11 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-	
-	includeMod "com.terraformersmc:vistas:${project.vistas_version}"
+
+        includeMod "com.terraformersmc:vistas:${project.vistas_version}"
 	includeMod "com.github.LudoCrypt:Extra-Dim-Api:${project.exdimapi_version}"
 	includeMod "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
 	includeMod "io.github.fablabsmc:bannerpp:${project.bannerpp_version}"
-	
-	modImplementation ("com.github.qouteall.ImmersivePortalsMod:imm_ptl_core:${project.immersive_portals_core_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	
-	include ("com.github.qouteall.ImmersivePortalsMod:imm_ptl_core:${project.immersive_portals_core_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
 }
 
 def includeMod(String dep) {
