@@ -23,6 +23,6 @@ public class BackroomsClient implements ClientModInitializer, ExtraSkiesApi {
 	@Override
 	public void registerModSkies(Map<Identifier, SkyProperties> map) {
 		SkyProperties Level0Sky = new Level0Sky();
-		map.put(Level0.LEVEL_0_ID,Level0Sky);
+		map.put(Level0.LEVEL_0_ID, Level0Sky);
 	}
 }

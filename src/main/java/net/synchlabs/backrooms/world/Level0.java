@@ -28,7 +28,7 @@ public class Level0 extends ExtraDimension{
 	public static final NoiseSettings DEFAULT = new NoiseSettings(7, ImmutableList.of(1.0D));
 
 	public Level0() {
-		super(LEVEL_0_ID, DimensionTypeAccessor.createDimensionType(OptionalLong.of(1200), true, false, false, false, 1, false, false, false, false, false, 256, VoronoiBiomeAccessType.INSTANCE, BlockTags.INFINIBURN_OVERWORLD.getId(), LEVEL_0_ID, 0.1F), LEVEL_0_ID, (dim, client, ci) -> {
+		super(LEVEL_0_ID, DimensionTypeAccessor.createDimensionType(OptionalLong.of(1200), true, false, false, false, 1, false, false, false, false, false, 256, VoronoiBiomeAccessType.INSTANCE, BlockTags.INFINIBURN_OVERWORLD.getId(), LEVEL_0_ID, 0.2F), LEVEL_0_ID, (dim, client, ci) -> {
 		}, DEFAULT, DEFAULT, DEFAULT, DEFAULT, null, NOISE_POINTS);
 	}
 

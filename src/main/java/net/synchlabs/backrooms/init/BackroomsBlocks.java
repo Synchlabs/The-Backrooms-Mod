@@ -8,8 +8,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.minecraft.block.DoorBlock;
-import net.minecraft.block.RedstoneLampBlock;
 import net.synchlabs.backrooms.Backrooms;
 import net.synchlabs.backrooms.block.*;
 import net.synchlabs.backrooms.block.entity.ComputerBlockEntity;
