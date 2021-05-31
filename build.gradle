@@ -33,7 +33,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
-        includeMod "com.terraformersmc:vistas:${project.vistas_version}"
+	includeMod "com.terraformersmc:vistas:${project.vistas_version}"
 	includeMod "com.github.LudoCrypt:Extra-Dim-Api:${project.exdimapi_version}"
 	includeMod "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
 	includeMod "io.github.fablabsmc:bannerpp:${project.bannerpp_version}"
