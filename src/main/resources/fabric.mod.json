@@ -36,8 +36,9 @@
 		"backrooms.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.7.4",
+		"fabricloader": ">=0.11.6",
 		"fabric": "*",
-		"minecraft": "1.16.x"
+		"minecraft": "1.17.x",
+		"java": ">=16"
 	}
 }
