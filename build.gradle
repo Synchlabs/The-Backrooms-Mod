@@ -12,10 +12,14 @@ group = project.maven_group
 
 repositories {
 	maven {
-        name = 'TerraformersMC'
-        url = 'https://maven.terraformersmc.com/'
-        }
-        maven {
+		name = 'TerraformersMC'
+		url = 'https://maven.terraformersmc.com/'
+	}
+	maven {
+		name = 'Jitpack'
+		url = 'https://jitpack.io/'
+	}
+	maven {
 		url "https://maven.shedaniel.me/"
 	}
 	maven {
