@@ -39,7 +39,6 @@ dependencies {
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
 	includeMod "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
-	modImplementation "com.github.Synchlabs.Extra-Dim-Api:${project.exdimapi_version}"
 	includeMod "io.github.fablabsmc:bannerpp:${project.bannerpp_version}"
 }
 

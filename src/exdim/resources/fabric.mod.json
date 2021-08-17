@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "exdimapi",
+	"version": "${version}",
+	"name": "ExtraDimApi",
+	"description": "Add extra and extra Dimensions!",
+	"authors": [
+		"LudoCrypt"
+	],
+	"contact": {
+		"homepage": "https://github.com/LudoCrypt/Extra-Dim-Api",
+		"sources": "https://github.com/LudoCrypt/Extra-Dim-Api",
+		"issues": "https://github.com/LudoCrypt/Extra-Dim-Api/issues"
+	},
+	"license": "LGPLv3",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.ludocrypt.exdimapi.ExtraDims"
+		],
+		"client": [
+			"net.ludocrypt.exdimapi.ExtraDimsClient"
+		]
+	},
+	"mixins": [
+		"exdimapi.mixins.json"
+	],
+	"accessWidener": "exdimapi.accesswidener",
+	"depends": {
+		"fabricloader": ">=0.7.4",
+		"fabric": "*",
+		"minecraft": "1.16.x"
+	}
+}
