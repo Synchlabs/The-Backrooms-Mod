@@ -6,6 +6,7 @@ import java.util.Random;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
+import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.synchlabs.backrooms.init.BackroomsBlocks;
 import net.synchlabs.backrooms.world.chunk.MazeChunkGenerator;
 import net.minecraft.block.BlockState;
@@ -25,7 +26,12 @@ public class WoolenCarpetFeature extends Feature<DefaultFeatureConfig> {
 		super(configCodec);
 	}
 
+
 	@Override
+	public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+		return generate(context.getWorld(), context.getGenerator(), context.getRandom(), context.getOrigin(), context.getConfig());
+	}
+
 	public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig config) {
 		if (blockstateNoisemap == null) {
 			blockstateNoisemap = MazeChunkGenerator.createNoise(ImmutableList.of(BackroomsBlocks.WOOLEN_CARPET.getDefaultState(), BackroomsBlocks.WOOLEN_CARPET.getDefaultState(), BackroomsBlocks.MOLDY_WOOLEN_CARPET.getDefaultState()), world.getSeed());

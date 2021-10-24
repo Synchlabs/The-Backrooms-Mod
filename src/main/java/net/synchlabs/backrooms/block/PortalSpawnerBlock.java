@@ -1,10 +1,18 @@
 package net.synchlabs.backrooms.block;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.synchlabs.backrooms.block.entity.ComputerBlockEntity;
 import net.synchlabs.backrooms.block.entity.PortalSpawnerBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.world.BlockView;
+import net.synchlabs.backrooms.init.BackroomsBlocks;
+import org.jetbrains.annotations.Nullable;
 
 public class PortalSpawnerBlock extends Block implements BlockEntityProvider {
 
@@ -12,9 +20,22 @@ public class PortalSpawnerBlock extends Block implements BlockEntityProvider {
 		super(settings);
 	}
 
+	@Nullable
 	@Override
-	public BlockEntity createBlockEntity(BlockView world) {
-		return new PortalSpawnerBlockEntity();
+	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+		return new PortalSpawnerBlockEntity(pos, state);
+	}
+
+	@Nullable
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+		if(type == BackroomsBlocks.PORTAL_SPAWNER_BLOCK_ENTITY) {
+			return (theWorld, blockPos, blockState, entity) -> PortalSpawnerBlockEntity.tick(theWorld, blockPos, blockState, (PortalSpawnerBlockEntity)(entity));
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 }

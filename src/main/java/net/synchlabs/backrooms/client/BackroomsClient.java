@@ -2,7 +2,6 @@ package net.synchlabs.backrooms.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.ludocrypt.exdimapi.api.ExtraSkiesApi;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.SkyProperties;
 import net.minecraft.util.Identifier;
@@ -12,7 +11,7 @@ import net.synchlabs.backrooms.world.Level0Sky;
 
 import java.util.Map;
 
-public class BackroomsClient implements ClientModInitializer, ExtraSkiesApi {
+public class BackroomsClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
@@ -20,9 +19,8 @@ public class BackroomsClient implements ClientModInitializer, ExtraSkiesApi {
 		BlockRenderLayerMap.INSTANCE.putBlock(BackroomsBlocks.OFFICE_DOOR, RenderLayer.getTranslucent());
 	}
 
-	@Override
 	public void registerModSkies(Map<Identifier, SkyProperties> map) {
 		SkyProperties Level0Sky = new Level0Sky();
-		map.put(Level0.LEVEL_0_ID, Level0Sky);
+		//map.put(Level0.LEVEL_0_ID, Level0Sky);
 	}
 }

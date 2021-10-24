@@ -11,6 +11,7 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.util.FeatureContext;
 
 public class DoorCarverFeature extends Feature<DefaultFeatureConfig> {
 
@@ -19,6 +20,10 @@ public class DoorCarverFeature extends Feature<DefaultFeatureConfig> {
 	}
 
 	@Override
+	public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+		return generate(context.getWorld(), context.getGenerator(), context.getRandom(), context.getOrigin(), context.getConfig());
+	}
+
 	public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig config) {
 
 		for (Direction dir : Direction.values()) {

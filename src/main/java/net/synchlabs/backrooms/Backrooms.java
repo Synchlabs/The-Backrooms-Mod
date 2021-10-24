@@ -11,12 +11,10 @@ import net.synchlabs.backrooms.init.BackroomsItems;
 import net.synchlabs.backrooms.init.BackroomsLoomPatterns;
 import net.synchlabs.backrooms.world.Level0;
 import net.synchlabs.backrooms.world.chunk.MazeChunkGenerator;
-import net.ludocrypt.exdimapi.api.ExtraDimApi;
-import net.ludocrypt.exdimapi.api.ExtraDimension;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class Backrooms implements ModInitializer, ExtraDimApi {
+public class Backrooms implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
@@ -29,10 +27,10 @@ public class Backrooms implements ModInitializer, ExtraDimApi {
 		BackroomsGroups.init();
 	}
 
-	@Override
+	/*@Override
 	public void registerModDimensions(Map<Identifier, ExtraDimension> registry) {
 		registry.put(Level0.LEVEL_0_ID, new Level0());
-	}
+	}*/
 
 	public static Identifier id(String id) {
 		return new Identifier("backrooms", id);

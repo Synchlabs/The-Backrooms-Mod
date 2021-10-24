@@ -9,6 +9,7 @@ import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
+import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.synchlabs.backrooms.init.BackroomsBlocks;
 import net.synchlabs.backrooms.world.chunk.MazeChunkGenerator;
 
@@ -24,6 +25,11 @@ public class RedWallpaperFillerFeature extends WallpaperFillerFeature {
     }
 
     @Override
+    public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+        return generate(context.getWorld(), context.getGenerator(), context.getRandom(), context.getOrigin(), context.getConfig());
+    }
+
+
     public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig config) {
         if (blockstateNoisemap == null) {
             blockstateNoisemap = MazeChunkGenerator.createNoise(ImmutableList.of(BackroomsBlocks.RED_PATTERNED_WALLPAPER.getDefaultState(), BackroomsBlocks.RED_STRIPED_WALLPAPER.getDefaultState(), BackroomsBlocks.RED_DOTTED_WALLPAPER.getDefaultState(), BackroomsBlocks.RED_BLANK_WALLPAPER.getDefaultState(), BackroomsBlocks.RED_STRIPED_WALLPAPER.getDefaultState(), BackroomsBlocks.RED_BLANK_WALLPAPER.getDefaultState(), BackroomsBlocks.RED_DOTTED_WALLPAPER.getDefaultState(), BackroomsBlocks.RED_PATTERNED_WALLPAPER.getDefaultState(), BackroomsBlocks.PLASTERWALL.getDefaultState()), world.getSeed() ^ -4);

@@ -1,27 +1,27 @@
 package net.synchlabs.backrooms.block.entity;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.synchlabs.backrooms.Backrooms;
 import net.synchlabs.backrooms.block.ComputerBlock;
 import net.synchlabs.backrooms.init.BackroomsBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.util.Tickable;
 
-public class ComputerBlockEntity extends BlockEntity implements Tickable {
+public class ComputerBlockEntity extends BlockEntity {
 
-    public ComputerBlockEntity(BlockEntityType<?> type) {
-        super(type);
+    public ComputerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
-    public ComputerBlockEntity() {
-        super(BackroomsBlocks.COMPUTER_BLOCK_ENTITY);
+    public ComputerBlockEntity(BlockPos pos, BlockState state) {
+        super(BackroomsBlocks.COMPUTER_BLOCK_ENTITY, pos, state);
     }
+    
 
-    @Override
-    public void tick() {
-        BlockState state = world.getBlockState(pos);
+    public static void tick(World world, BlockPos pos, BlockState state, ComputerBlockEntity blockEntity) {
         if(world.isReceivingRedstonePower(pos)) {
             System.out.println("ON");
             world.setBlockState(pos, state.with(ComputerBlock.LIT, true));

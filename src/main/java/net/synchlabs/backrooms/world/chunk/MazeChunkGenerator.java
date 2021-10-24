@@ -4,6 +4,8 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
@@ -17,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.ChunkRegion;
+import net.minecraft.world.HeightLimitView;
 import net.minecraft.world.Heightmap.Type;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.biome.source.BiomeSource;
@@ -108,13 +111,13 @@ public class MazeChunkGenerator extends ChunkGenerator {
 	}
 
 	@Override
-	public void populateNoise(WorldAccess world, StructureAccessor accessor, Chunk chunk) {
+	public CompletableFuture<Chunk> populateNoise(Executor exec, StructureAccessor accessor, Chunk chunk) {
 		for (int y = 0; y < 255; y++) {
 			for (int x = 0; x < 16; x++) {
 				for (int z = 0; z < 16; z++) {
 					BlockPos pos = chunk.getPos().getStartPos().add(x, y, z);
 					if (pos.getY() < this.getSeaLevel() || pos.getY() >= this.getSeaLevel() + this.height) {
-						world.setBlockState(pos, states[0], 3);
+						chunk.setBlockState(pos, states[0], true);
 					} else {
 						Random random = new Random(seed ^ pos.getX() * pos.getZ() ^ chunk.getPos().toLong());
 						// Rooms
@@ -133,12 +136,12 @@ public class MazeChunkGenerator extends ChunkGenerator {
 
 						int size = width;
 						if (pos.getX() % size == 0 && pos.getZ() % size == 0) {
-							buildRoom(world, pos, size, random.nextBoolean() && random.nextBoolean() && random.nextBoolean() ? north : !north, random.nextBoolean() && random.nextBoolean() && random.nextBoolean() ? east : !east, random.nextBoolean() && random.nextBoolean() && random.nextBoolean() ? south : !south, random.nextBoolean() && random.nextBoolean() && random.nextBoolean() ? west : !west, states[1]);
+							buildRoom(chunk, pos, size, random.nextBoolean() && random.nextBoolean() && random.nextBoolean() ? north : !north, random.nextBoolean() && random.nextBoolean() && random.nextBoolean() ? east : !east, random.nextBoolean() && random.nextBoolean() && random.nextBoolean() ? south : !south, random.nextBoolean() && random.nextBoolean() && random.nextBoolean() ? west : !west, states[1]);
 							// Cleanup
-							if (world.getBlockState(pos).isOf(states[1].getBlock())) {
-								if (world.getBlockState(pos.north()).isOf(states[1].getBlock()) && world.getBlockState(pos.east()).isOf(states[1].getBlock()) && world.getBlockState(pos.south()).isOf(states[1].getBlock()) && world.getBlockState(pos.west()).isOf(states[1].getBlock())) {
-									buildWalls(world, pos, size, random.nextBoolean() && random.nextBoolean(), random.nextBoolean() && random.nextBoolean(), random.nextBoolean() && random.nextBoolean(), random.nextBoolean() && random.nextBoolean(), states[2]);
-									world.setBlockState(pos, states[1], 3);
+							if (chunk.getBlockState(pos).isOf(states[1].getBlock())) {
+								if (chunk.getBlockState(pos.north()).isOf(states[1].getBlock()) && chunk.getBlockState(pos.east()).isOf(states[1].getBlock()) && chunk.getBlockState(pos.south()).isOf(states[1].getBlock()) && chunk.getBlockState(pos.west()).isOf(states[1].getBlock())) {
+									buildWalls(chunk, pos, size, random.nextBoolean() && random.nextBoolean(), random.nextBoolean() && random.nextBoolean(), random.nextBoolean() && random.nextBoolean(), random.nextBoolean() && random.nextBoolean(), states[2]);
+									chunk.setBlockState(pos, states[1], true);
 								}
 							}
 						}
@@ -146,53 +149,54 @@ public class MazeChunkGenerator extends ChunkGenerator {
 				}
 			}
 		}
+		return CompletableFuture.completedFuture(chunk); //useless, this is to stop the error
 	}
 
-	private void buildRoom(WorldAccess world, BlockPos pos, int size, boolean north, boolean east, boolean south, boolean west, BlockState state) {
-		world.setBlockState(pos.add(0, 0, 0), state, 3);
-		world.setBlockState(pos.add(size, 0, 0), state, 3);
-		world.setBlockState(pos.add(0, 0, size), state, 3);
-		world.setBlockState(pos.add(size, 0, size), state, 3);
+	private void buildRoom(Chunk world, BlockPos pos, int size, boolean north, boolean east, boolean south, boolean west, BlockState state) {
+		world.setBlockState(pos.add(0, 0, 0), state, true);
+		world.setBlockState(pos.add(size, 0, 0), state, true);
+		world.setBlockState(pos.add(0, 0, size), state, true);
+		world.setBlockState(pos.add(size, 0, size), state, true);
 
 		buildWalls(world, pos, size, north, east, south, west, state);
 	}
 
-	private void buildWalls(WorldAccess world, BlockPos pos, int size, boolean north, boolean east, boolean south, boolean west, BlockState state) {
+	private void buildWalls(Chunk world, BlockPos pos, int size, boolean north, boolean east, boolean south, boolean west, BlockState state) {
 		if (north) {
 			BlockPos.iterate(pos, pos.add(size, 0, 0)).forEach((blockPos) -> {
-				world.setBlockState(blockPos, state, 3);
+				world.setBlockState(blockPos, state, true);
 			});
 		}
 		if (east) {
 			BlockPos.iterate(pos.add(size, 0, 0), pos.add(size, 0, size)).forEach((blockPos) -> {
-				world.setBlockState(blockPos, state, 3);
+				world.setBlockState(blockPos, state, true);
 			});
 		}
 		if (south) {
 			BlockPos.iterate(pos.add(0, 0, size), pos.add(size, 0, size)).forEach((blockPos) -> {
-				world.setBlockState(blockPos, state, 3);
+				world.setBlockState(blockPos, state, true);
 			});
 		}
 		if (west) {
 			BlockPos.iterate(pos, pos.add(0, 0, size)).forEach((blockPos) -> {
-				world.setBlockState(blockPos, state, 3);
+				world.setBlockState(blockPos, state, true);
 			});
 		}
-	}
-
-	@Override
-	public int getHeight(int x, int z, Type heightmapType) {
-		return this.getSeaLevel() + this.height;
-	}
-
-	@Override
-	public BlockView getColumnSample(int x, int z) {
-		return new VerticalBlockSample(states);
 	}
 
 	@Override
 	public int getSeaLevel() {
 		return this.seaLevel;
+	}
+
+	@Override
+	public int getHeight(int x, int z, Type heightmap, HeightLimitView world) {
+		return this.getSeaLevel() + this.height;
+	}
+
+	@Override
+	public VerticalBlockSample getColumnSample(int x, int z, HeightLimitView world) {
+		return new VerticalBlockSample(world.getHeight(), states);
 	}
 
 	public static <P> ImmutableList<Pair<P, OctavePerlinNoiseSampler>> createNoise(List<P> aspects, long seed) {

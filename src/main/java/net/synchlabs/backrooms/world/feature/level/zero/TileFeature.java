@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
+import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.synchlabs.backrooms.block.TileBlock;
 import net.synchlabs.backrooms.init.BackroomsBlocks;
 import net.minecraft.util.math.BlockPos;
@@ -20,6 +21,11 @@ public class TileFeature extends Feature<DefaultFeatureConfig> {
 	}
 
 	@Override
+	public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+		return generate(context.getWorld(), context.getGenerator(), context.getRandom(), context.getOrigin(), context.getConfig());
+	}
+
+
 	public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig config) {
 		for (int x = 0; x < 16; x++) {
 			for (int z = 0; z < 16; z++) {

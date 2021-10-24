@@ -1,23 +1,24 @@
 package net.synchlabs.backrooms.block.entity;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.synchlabs.backrooms.init.BackroomsBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.util.Tickable;
 
-public class PortalSpawnerBlockEntity extends BlockEntity implements Tickable {
+public class PortalSpawnerBlockEntity extends BlockEntity {
 
-	public PortalSpawnerBlockEntity(BlockEntityType<?> type) {
-		super(type);
+	public PortalSpawnerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+		super(type, pos, state);
 	}
 
-	public PortalSpawnerBlockEntity() {
-		super(BackroomsBlocks.PORTAL_SPAWNER_BLOCK_ENTITY);
+	public PortalSpawnerBlockEntity(BlockPos pos, BlockState state) {
+		super(BackroomsBlocks.PORTAL_SPAWNER_BLOCK_ENTITY, pos, state);
 	}
 
-	@Override
-	public void tick() {
+	public static void tick(World world, BlockPos pos, BlockState state, PortalSpawnerBlockEntity blockEntity) {
 		world.setBlockState(pos, Blocks.AIR.getDefaultState());
 	}
 

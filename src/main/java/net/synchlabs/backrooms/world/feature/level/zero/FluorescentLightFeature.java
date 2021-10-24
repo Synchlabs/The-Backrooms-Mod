@@ -7,6 +7,7 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.synchlabs.backrooms.block.TileBlock;
 import net.synchlabs.backrooms.init.BackroomsBlocks;
 
@@ -19,6 +20,11 @@ public class FluorescentLightFeature extends Feature<DefaultFeatureConfig> {
 	}
 
 	@Override
+	public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+		return generate(context.getWorld(), context.getGenerator(), context.getRandom(), context.getOrigin(), context.getConfig());
+	}
+
+
 	public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig config) {
 		for (int x = 0; x < 16; x++) {
 			for (int z = 0; z < 16; z++) {
