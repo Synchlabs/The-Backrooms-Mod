@@ -1,10 +1,10 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
+	id 'fabric-loom' version '0.8-SNAPSHOT'
 	id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
@@ -12,7 +12,16 @@ group = project.maven_group
 
 repositories {
 	maven {
-		url 'https://jitpack.io'
+		name = 'TerraformersMC'
+		url = 'https://maven.terraformersmc.com/'
+	}
+	maven {
+		name = 'Jitpack'
+		url = 'https://jitpack.io/'
+	}
+	maven {
+		name = 'synchlabs'
+		url = 'https://github.com/Synchlabs/ExdimapiREPO'
 	}
 	maven {
 		url "https://maven.shedaniel.me/"
@@ -20,32 +29,18 @@ repositories {
 	maven {
 		url 'https://server.bbkr.space/artifactory/libs-release/'
 	}
-	maven {
-        name = 'TerraformersMC'
-        url = 'https://maven.terraformersmc.com/'
-    }
 }
 
 dependencies {
+	implementation 'org.jetbrains:annotations:20.1.0'
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-	
-	includeMod "com.terraformersmc:vistas:${project.vistas_version}"
-	includeMod "com.github.LudoCrypt:Extra-Dim-Api:${project.exdimapi_version}"
-	includeMod "com.github.PepperCode1:ConnectedTexturesMod-Fabric:${project.ctm_version}"
+
 	includeMod "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
 	includeMod "io.github.fablabsmc:bannerpp:${project.bannerpp_version}"
-	
-	modImplementation ("com.github.qouteall.ImmersivePortalsMod:imm_ptl_core:${project.immersive_portals_core_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	
-	include ("com.github.qouteall.ImmersivePortalsMod:imm_ptl_core:${project.immersive_portals_core_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
 }
 
 def includeMod(String dep) {
@@ -63,10 +58,7 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = "UTF-8"
-	def targetVersion = 8
-	if (JavaVersion.current().isJava9Compatible()) {
-		 it.options.release = targetVersion
-	}
+	it.options.release = 16
 }
 
 java {

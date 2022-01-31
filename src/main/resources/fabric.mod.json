@@ -5,36 +5,40 @@
 	"name": "The Backrooms",
 	"description": "The urban legend of The Backrooms, in Minecraft!",
 	"authors": [
-		"LudoCrypt"
+		"Synchlabs"
 	],
 	"contact": {
 		"homepage": "https://www.curseforge.com/minecraft/mc-mods/the-backrooms",
-		"sources": "https://github.com/LudoCrypt/The-Backrooms",
-		"issues": "https://github.com/LudoCrypt/The-Backrooms/issues"
+		"sources": "https://github.com/Synchlabs/The-Backrooms",
+		"issues": "https://github.com/Synchlabs/The-Backrooms/issues"
 	},
 	"license": "LGPLv3",
 	"icon": "assets/backrooms/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.ludocrypt.backrooms.Backrooms"
+			"net.synchlabs.backrooms.Backrooms"
 		],
 		"client": [
-			"net.ludocrypt.backrooms.client.BackroomsClient"
+			"net.synchlabs.backrooms.client.BackroomsClient"
 		],
 		"exdimapi": [
-			"net.ludocrypt.backrooms.Backrooms"
+			"net.synchlabs.backrooms.Backrooms"
+		],
+		"exskyapi": [
+			"net.synchlabs.backrooms.client.BackroomsClient"
 		],
 		"mm:early_risers": [
-			"net.ludocrypt.backrooms.init.BackroomsEarlyRisers"
+			"net.synchlabs.backrooms.init.BackroomsEarlyRisers"
 		]
 	},
 	"mixins": [
 		"backrooms.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.7.4",
+		"fabricloader": ">=0.11.6",
 		"fabric": "*",
-		"minecraft": "1.16.x"
+		"minecraft": "1.17.x",
+		"java": ">=16"
 	}
 }
